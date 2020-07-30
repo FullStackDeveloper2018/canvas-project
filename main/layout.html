@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/responsive.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/fontawesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+<style>
+h1 , h2 ,h3 , h4 ,h5, h6, p { 
+	margin:0;
+	padding:0;
+}
+body{
+	margin:0;
+	padding:0;
+	font-family: 'Open Sans', sans-serif;
+	background-color:#f4f4f4;
+}
+li{
+	list-style:none;
+}
+.show-container {
+	width: 72%;
+	/*margin: 0 auto;*/
+}
+.icon-list {
+	display: flex;
+	width: 100%;
+	background-color: #fff;
+	margin-top: 15px;
+	padding: 5px;
+	margin-bottom: 17px;
+}
+#screen-editor {
+	background-color: #fff;
+	margin-right: auto;
+	/*height: auto;
+	width: auto;*/
+	border: 5px solid #CACACA;
+
+}
+
+@media (min-width:927px){
+    #screen-editor{
+        height: 442px;
+        width: 778px;
+    }
+}
+
+
+#fullScreen{
+    margin-left: -576px;
+    width: 1920px;
+    height: 1080px;
+    background-size: 4.64167px 2.73594px, 5.64167px 1.73594px !important;
+    transform: scale(0.4);
+    margin-top: -324px;
+}
+
+.icon-list ul {
+	display: flex;
+	width: 50%;
+	padding: 9px 0;
+}
+.insert-iconn {
+	color: #F26F26;
+	text-decoration: none;
+}
+.insert-iconn:hover , .insert-iconn:focus{
+	color: #F26F26;
+	text-decoration: none;
+}
+.insert-iconn:active{
+	color: #F26F26;
+	text-decoration: none;
+}
+.insert-iconn i {
+	color: #F26F26 !important;
+	border: 1px solid #F26F26;
+	border-radius: 100px;
+	padding: 3px;
+	font-size: 9px !important;
+}
+.insert-iconn:hover:focus {
+	color: #F26F26 !important;
+	text-decoration: none !important;
+}
+.icon-list h3 {
+	width: 50%;
+	font-size: 16px;
+	padding: 14px 20px;
+}
+.icon-list ul li {
+	margin: 0 10px;
+}
+.icon-list li i {
+	color: #9c9c9c;
+	font-size: 14px;
+}
+#screen-editor .screen-back {
+	position: relative;
+	background-color: #000;
+	background-image: -webkit-linear-gradient(0deg,rgba(255,255,255,.1) 0,transparent 1px),-webkit-linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);
+	background-image: -moz-linear-gradient(0deg,rgba(255,255,255,.1) 0,transparent 1px),-moz-linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);
+	background-image: linear-gradient(0deg,rgba(255,255,255,.1) 0,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);
+	background-size: 16px 9px,16px 9px;
+	background-position: 0 0,0 0;
+}
+.insert-item-types {
+	padding: 6px 40px 20px;
+}
+
+.sidebar-heading {
+	color: #F26F26;
+	font-size: 16px;
+	padding: 30px 40px 10px;
+	width:90%;
+
+}
+
+.sidebar-close{
+	color: #F26F26;
+	font-size: 16px;
+	padding: 30px 40px 10px;
+	cursor:pointer;
+}
+
+.insert-item-types ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 0;
+}
+.insert-item-types ul li i{
+	font-size: 38px;
+	color: #fff;
+}
+.insert-item-types li a {
+	padding: 22px;
+}
+.insert-item-types li {
+	width: 47%;
+	margin-bottom: 10px;
+	text-align: center;
+}
+.insert-label {
+    text-align: center;
+    line-height: 42px;
+    font-size: 12px;
+}
+.insert-item-types li a {
+	border-radius: 3px;
+	background: #dcdcdc;
+	color: #fff;
+	cursor: pointer;
+	transition: all ease-in-out .5s;	
+}
+.header-hr {
+	margin-top: 10px;
+	margin-bottom: 30px;
+	height: 1px;
+	background: #e8e9ec;
+	border: 0;
+	width: 74%;
+}
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	top: 50px;;
+	right: 0;
+	background-color: #fff;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 0px;
+	z-index: 99;
+}
+.general-nav{
+	height: 100%;
+	width: 300px;
+	position: fixed;
+	z-index: 1;
+	top: 50px;
+	right: 0;
+	background-color: #fff;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 0px;
+}
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.general-nav label {
+	font-size: 13px !important;
+	color: #4B4B50 !important;
+	margin-bottom: 8px;
+	display: block;
+	font-weight: normal;
+}
+.general-nav input {
+	border: 1px solid #e8e9ec !important;
+	border-radius: 4px !important;
+	font-size: 12px;
+	color: #4B4B50;
+	padding-left: 15px;
+	padding-right: 30px;
+	height: 36px;
+	width: 100%;
+	box-shadow: unset;
+}
+.form-group.field-name.input-text-editor {
+	margin-bottom: 20px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+#ratio {
+	border: 1px solid #e8e9ec !important;
+	border-radius: 4px !important;
+	font-size: 12px;
+	color: #4B4B50;
+	padding-left: 15px;
+	padding-right: 30px;
+	height: 30px;
+	width: 100%;
+}
+/* 23 june code */
+.form-actions.layout-form-actions.bottom-btns {
+	width: 300px;
+	background: #fff;
+	padding: 20px;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 99;
+	box-shadow: 9px 0 10px 4px rgba(101,101,101,.15);
+	display: flex;
+	justify-content: space-between;
+}
+.save-btnss {
+	background-color: #F26F26 !important;
+	border: 1px solid #F26F26 !important;
+	min-width: 100px;
+	color: #fff;
+	border-radius: 4px;
+	font-size: 13px;
+	padding: 6px;
+	width: 48%;
+}
+.cancel-btnss {
+	border: 1px solid #393939 !important;
+	background-color: #fff !important;
+	color: #393939 !important;
+	min-width: 100px;
+	font-size: 13px;
+	padding: 6px;
+	border-radius: 3px;
+	width: 48%;
+}
+.cancel-btnss:hover{
+	border: 1px solid #393939 !important;
+	background-color: #393939 !important;
+	color: #fff !important;
+}
+.select2.select2-container.select2-container--default.select2-container--focus {
+	width: 100%!important;
+}
+.select2.select2-container.select2-container--default {
+	width: 100% !important;
+}
+.cust-model .modal-footer {
+	padding: 13px 20px 13px;
+	margin-top: 15px;
+	text-align: right;
+	border-top: 1px solid #e5e5e5;
+	border-top-color: #e4e9ee;
+	box-shadow: none;
+	background-color: #eff3f8;
+}
+.ok-btns {
+	border: 1px solid #F26F26 !important;
+	background-color: #F26F26 !important;
+	min-width: 140px;
+	font-size: 16px;
+	border-radius: 0px;
+}
+.cancel-btns{
+	border: 1px solid #393939 !important;
+	background-color: #fff !important;
+	color: #393939 !important;
+	outline: none;
+	min-width: 140px;
+	border-radius: 0;
+	font-size: 16px;
+}
+.cust-ratio-select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	height: 36px;
+	border: 1px solid #e8e9ec !important;
+	border-radius: 4px !important;
+	font-size: 12px;
+	color: #4B4B50;
+	box-shadow: unset;
+}
+.outer-selct{
+	position:relative;
+}
+.outer-selct:after {
+	content: '>';
+	font: 20px "Consolas", monospacepx;
+	color: #e8e9ec;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+	right: 11px;
+	top: 8px;
+	padding: 0 0 2px;
+	/* border-bottom: 1px solid #999; */
+	position: absolute;
+	pointer-events: none;
+	z-index: 99;
+	font-weight: bold;
+}
+.cust-model .modal-header {
+	 border-bottom: 0px solid #e5e5e5!important;
+}
+.cust-model .modal-body {
+	padding: 0 20px 20px 20px;
+	margin-bottom: 30px;
+}
+.js-example-basic-single.selctarea.select2-hidden-accessible {
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	background-color: #fff;
+	border: 1px solid #ccc!immportant;
+	border-top-color: rgb(204, 204, 204);
+	border-right-color: rgb(204, 204, 204);
+	border-bottom-color: rgb(204, 204, 204);
+	border-left-color: rgb(204, 204, 204);
+	border-radius: 4px;
+	color: #555;
+	font-size: 14px;
+	outline: 0;
+}
+.select2-container--default .select2-selection--single {
+	background-color: #fff;
+	border: 1px solid #e8e9ec;
+	border-radius: 4px;
+	height: 36px;
+	padding: 3px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	height: 34px;
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	width: 20px;
+}
+.border-cl {
+	border-right: 2px solid #e9e9f0;
+	margin: 0 10px;
+}
+/* custom-shape model css */
+.insert-item-types.cust-shapes {
+	padding: 6px 5px;
+}
+.heading-sp {
+	font-size: 16px;
+}
+.insert-item-types.cust-shapes  li {
+	width: 22%;
+	margin-bottom: 10px;
+	text-align: center;
+}
+.insert-item-types.cust-shapes li a {
+	/* padding: 34px; */
+	width: 100%;
+	display: inline-block;
+	height: 87px;
+	line-height: 70px;
+}
+.cust-shapes .reactangle-icon {
+	width: 37px;
+	background: #fff;
+	height: 26px;
+	display: inline-block;
+	vertical-align: middle;
+	/* margin-top: -26px; */
+	position: relative;
+	top: -13px;
+}
+.custom-shape-model .modal-dialog {
+	width: 580px;
+}
+.cust-shapes .insert-label {
+	text-align: center;
+	line-height: 42px;
+	font-size: 12px;
+}
+.square-icon {
+	background-color: #fff;
+	height: 38px;
+	width: 38px;
+	display: inline-block;
+}
+.circle-icon {
+	background-color: #fff;
+	height: 38px;
+	width: 38px;
+	display: inline-block;
+	border-radius: 100px;
+}
+.oval-icon {
+	background-color: #fff;
+	width: 39px;
+	height: 27px;
+	display: inline-block;
+	border-radius: 14px;
+	border-radius: 100px /66px;
+	vertical-align: super;
+}
+.horline-icon {
+	height: 4px;
+	width: 38px;
+	background-color: #ffff;
+	display: inline-block;
+	vertical-align: text-top;
+	margin-top: -8px;
+}
+.vertline-icon {
+	height: 38px;
+	width: 4px;
+	background-color: #ffff;
+	display: inline-block;
+}
+.right-diagonal-icon {
+	height: 38px;
+	width: 4px;
+	background-color: #ffff;
+	display: inline-block;
+	transform: rotate(45deg);
+}
+.left-diagonal-icon {
+	height: 38px;
+	width: 4px;
+	background-color: #ffff;
+	display: inline-block;
+	transform: rotate(45deg);
+}
+.right-diagonal-icon {
+	height: 38px;
+	width: 4px;
+	background-color: #ffff;
+	display: inline-block;
+	transform: rotate(135deg);
+}
+/* custom-shape model end */
+.outer-selcts{
+	position:relative;
+}
+.outer-selcts::after {
+	content: '>';
+	font: 20px "Consolas", monospacepx;
+	color: #e8e9ec;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+	right: 11px;
+	bottom: 6px;
+	padding: 0 0 2px;
+	/* border-bottom: 1px solid #999; */
+	position: absolute;
+	pointer-events: none;
+	z-index: 99;
+	font-weight: bold;
+}
+.inner-frms {
+	display: flex;
+	flex-wrap: wrap;
+}
+.frm-area{
+   width:46%;
+}
+.inner-frms {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 22px;
+	justify-content: space-between;
+}
+.alignment-icons-wrapper label input[name="text-alignment"] {
+    height: 18px;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    width: 18px;
+    margin: 0;
+}
+.alignment-icons-wrapper label{
+	width: 14%;
+}
+.margin-tpp {
+	margin-top: 20px;
+}
+.alignment-icons-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
+/* 23 june code end*/
+/* 24 june  css*/
+.text-setting-sidebar, .shape-setting-sidebar, .image-setting-sidebar{
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 50px;
+	right: 0;
+	background-color: #fff;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 0px;
+	z-index: 99;
+}
+.alignment-icons-wrapper label span i {
+	color: #C7C7C7;
+	font-size: 16px;
+}
+.alignment-icons-wrapper label input[name="text-alignment"]:checked + span > i {
+	color: #4B4B50;
+}
+
+.spinner input {
+  text-align: right;
+}
+
+.input-group-btn-vertical {
+  position: relative;
+  white-space: nowrap;
+  width: 2%;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.input-group-btn-vertical > .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  margin-left: -1px;
+  position: relative;
+  border-radius: 0;
+}
+
+.input-group-btn-vertical > .btn:first-child {
+  border-top-right-radius: 4px;
+}
+
+.input-group-btn-vertical > .btn:last-child {
+  margin-top: -2px;
+  border-bottom-right-radius: 4px;
+}
+.frm-area .input-group-btn-vertical {
+	vertical-align: bottom;
+}
+.frm-area .input-group-btn-vertical > .btn {
+	border: 1px solid #e8e9ec;
+	padding: 8.4px;
+}
+.frm-area .input-group-btn-vertical i {
+	position: absolute;
+	top: 0;
+	left: 4px;
+	color: #e8e9ec;
+	
+}
+.frm-area .input-group-btn-vertical .btn.btn-default:hover {
+	background: transparent;
+}
+.input-group.spinner.frm-area input {
+	border-top-right-radius: 0px!important;
+	border-bottom-right-radius: 0px!important;
+}
+
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+}
+
+.resizer {
+    width: 15px;
+    height: 12px;
+    background: #101010;
+    border: 2px solid #f5f6f9;
+    position: absolute;
+}
+
+.resizer.top-left {
+    left: -8px;
+    top: 14px;
+    cursor: nwse-resize;
+}
+
+.resizer.top-right {
+    right: -8px;
+    top: 14px;
+    cursor: nwse-resize;
+}
+
+
+.text-box{
+    text-align: center;
+	height: auto !important;
+	width: 423px;
+	color: rgb(255, 255, 255);
+	font-weight: 200;
+	margin-top: 25%;
+	margin-left: 20%;
+	position: absolute;
+
+}
+
+.text-box1{
+    text-align: center;
+	height: 44px ;
+	width: 423px;
+	color: rgb(255, 255, 255);
+	font-weight: 200;
+	margin-top: 25%;
+	margin-left: 20%;
+	position: absolute;
+
+}
+
+.text-box1:focus-within{ cursor: move; }
+
+.rectangle-box{
+    height: 100px;
+    width: 150px;
+    margin-top: 25%;
+	margin-left: 20%;
+	position: absolute;
+}
+
+
+/******************* shapes css **********************/
+
+.holder {
+  float: left;
+  position: absolute;
+  margin: 130px 20px 20px 130px;
+  width: 550px;
+  height: 300px;
+  overflow: scroll;
+}
+.scaled:hover:before, .regular:hover:before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  border: 6px solid #ccc;
+}
+.regular:nth-child(1){
+  top: 5px;
+  left: 5px;
+  width: 120px;
+  height: 120px;
+  background-color: red;
+}
+.regular:nth-child(3){
+  top: 270px;
+  left: 60px;
+  width: 240px;
+  height: 180px;
+  background-color: blue;
+}
+.scaled {
+  top: 150px;
+  left: 25px;
+  position: absolute !important;
+  transform: scale(0.6) translate(0, 0);
+  transform-origin: top left 0px;
+  background-color: black;
+  border-width: 8px;
+  border: solid;
+  border-color: #fff;
+  
+  overflow: visible;
+}
+
+.rectangle-shape{
+    width: 200px;
+    height: 160px;
+}
+
+.square-shape{
+    width: 160px;
+    height: 160px; 
+}
+
+.circle-shape{
+    width: 160px;
+    height: 160px; 
+    border-radius: 50%;
+}
+
+.previewHeader {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #eee;
+  border: 1px solid #dedede;
+}
+.n, .s, .w, .e, .nw, .ne, .se, .sw {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.n:hover, .s:hover, .w:hover, .e:hover,
+.nw:hover, .ne:hover, .se:hover, .sw:hover {
+  background-color: red;
+}
+.nw {
+  top: -10px;
+  left: -10px;
+  cursor: nw-resize;
+}
+.ne {
+  top: -10px;
+  left: calc(100% - 10px);
+  cursor: ne-resize;
+}
+.sw {
+  top: calc(100% - 10px);
+  left: -10px;
+  cursor: sw-resize;
+}
+.se {
+  top: calc(100% - 10px);
+  left: calc(100% - 10px);
+  cursor: se-resize;
+}
+.n {
+  top: -10px;
+  left: calc(50% - 10px);
+  cursor: n-resize;
+}
+.w {
+  top: calc(50% - 10px);
+  left: -10px;
+  cursor: w-resize;
+}
+.e {
+  top: calc(50% - 10px);
+  left:  calc(100% - 10px);
+  cursor: e-resize;
+}
+.s {
+  top: calc(100% - 10px);
+  left: calc(50% - 10px);
+  cursor: s-resize;
+}
+
+
+
+/*****************************************************/
+
+/* 24 june css end*/
+</style>
+</head>
+<body>
+<div class="show-container">
+	<div class="icon-list">
+		<h3>Layout</h3>
+		<ul style="direction: rtl;">
+		    <li><a href="#"><i class="far fa-trash-alt"></i></a></li>
+		    <span class="border-cl"></span>
+			<li><a href="#" onclick="openNav()" class="insert-iconn">Insert <i class="fas fa-plus"></i></a></li>
+			<!--<span class="border-cl"></span>
+			<li><a href="#" ><i class="fa fa-undo" aria-hidden="true"></i></a></li>
+			<li><a href="#" ><i class="fa fa-repeat" aria-hidden="true"></i></a></li>
+			<li><a href="#"><i class="far fa-copy"></i></a></li>
+			<li><a href="#"><i class="far fa-edit"></i></a></li>-->
+			
+			
+			<!--<li><a href="#" onclick="openFullscreen();"><i class="fas fa-expand"></i></a></li>-->
+		</ul>
+		
+	</div>
+	<div class="canvas-container" style="">
+		<div class="screen" id="screen-editor" style="opacity: 1;">
+			<div id="fullScreen" class="screen-back inside" style="border: medium none; background-size: 6.64167px 3.73594px, 6.64167px 3.73594px;">
+				<div  class="screen-canvas" id="innerDiv"></div>
+			</div>
+			
+		</div>
+	</div>
+	
+</div>
+<div id="mySidenav" class="sidenav">
+    
+    <div style="display:flex;">
+  <h4 class="sidebar-heading">Insert</h4>
+  <h4 class="sidebar-close" id="insert-setting"><strong>x</strong></h4>
+  </div>
+  <hr class="header-hr">
+  <div class="insert-item-types">
+	<ul>
+		<li><a href="#" class="img-inserts" data-toggle="modal" data-target="#myModal"><i class="fas fa-image"></i> </a><span class="insert-label">Image</span></li>
+		<li><a href="#" onclick="opens()" class=""><i class="fas fa-text-height"></i> </a><span class="insert-label">Text</span></li>
+		<li><a href="#" data-toggle="modal" data-target="#myModals"><i class="fas fa-shapes"></i></a><span class="insert-label">Shape</span></li>
+	</ul>
+  </div>
+</div>
+<div class="general-nav" id="general-nav">
+  <h4 class="sidebar-heading">Layout Settings</h4>
+  <hr class="header-hr">
+  <div class="insert-item-types">
+	<div class="form-group field-name input-text-editor">
+	<label for="c74_name"> Name</label> <span data-editor="">
+	<input id="c74_name" class="form-control" name="name" type="text"></span> <p class="help-block" data-error=""></p><p class="help-block"></p> </div>
+  
+  <label for="c74_name">Ratio
+  </label>
+  <div class="outer-selct">
+<select class="js-states form-control cust-ratio-select land-pot" id="land-pot">
+    <option value="l">1920x1080(landscape)</option>
+	<option value="p">920x1080(potrait)</option>
+</select>
+</div>
+<br>
+<label>Content Layering</label>
+<ul id="sortable1" class="sortable_list connectedSortable content_layer"></ul>
+<style>
+.sortable_list {
+
+    width: 250px;
+    min-height: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+}
+
+.sortable_list li {
+    margin: 0 5px 5px 5px;
+    padding: 10px;
+    font-size: 12px;
+    background: #E8E9EC!important;
+    width: 200px;
+    border: none;
+    text-align: left;
+    cursor:pointer;
+}
+
+.sortable_list li: hover {
+    border: 2px solid #f26f26;
+    border-style: dashed;
+}
+    
+</style>
+<script>
+    
+    $(function() {
+        $( ".sortable_list" ).sortable({
+            connectWith: ".connectedSortable",
+            stop         : function(event,ui){
+                
+                var zin = $('.sortable_list li').length;
+                $('.sortable_list li').each(function(){
+                    jQuery('#'+$(this).attr('data-id')).css('z-index', zin);
+                    zin = zin - 1;
+                }); 
+            }
+                    
+        }).disableSelection();
+    });
+    
+    $('.sortable_list li').hover(function(){
+        jQuery('#'+$(this).attr('data-id')).focus();
+    })
+</script>
+
+</div>
+ </div>
+ <div class="form-actions layout-form-actions bottom-btns">
+	<button type="submit" class="save-btnss">Save</button>
+	<button class="cancel-btnss">Cancel</button>
+</div>
+
+<div class="general-nav text-setting-sidebar" id="text-setting-sidebar">
+  <div style="display: flex;">
+    <h4 class="sidebar-heading">Text Settings</h4>
+    <h4 class="sidebar-close" id="text-setting-close" style="cursor:pointer;"><strong>x</strong></h4>
+  </div>
+  <hr class="header-hr">
+  <div class="insert-item-types">
+  <label>Font</label>
+	<select class="js-example-basic-single selectfont" name="font">
+			  <option value="Arial">Arial</option>
+			  <option value="Courier">Courier</option>
+			  <option value="Comic Sans MS">Comic Sans MS</option>
+			  <option value="Time New Roman">Time New Roman</option>
+			</select>
+			<div class="inner-frms">
+			<div class="frm-area outer-selcts">
+			  <label>Font weight</label>
+				<select class="js-states form-control cust-ratio-select fontweight">
+ 					 <option value="Normal">Normal</option>
+ 					 <option value="Bold">Bold</option>
+ 					 <option value="Bolder">Bolder</option>
+ 					 <option value="Light">Light</option> 
+				</select>
+				</div>
+				
+							 <div class="input-group fontspinner spinner frm-area">
+						<label>Size (px)</label>
+						<input type="text" class="form-control" value="14" min="8" max="72" id="fontsize">
+						<div class="input-group-btn-vertical">
+						  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+						  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+						</div>
+					  </div>
+			</div>
+		
+			<div class="inner-frms">
+				<div class="frm-area">
+				<label>color</label>
+			    <input type="text" id="fontcolor" class="showPaletteOnly" name="fontcolor" value="#ccc">
+				</div>
+				<div class="frm-area">
+				<label>background</label>
+			    <input type="text" id="bckcolor" class="showPaletteOnly" name="bckcolor" value="">
+				</div>
+			</div>
+			<div class="inner-frms">
+			  
+				<div class="input-group linespinner spinner frm-area">
+					<label>Line Height</label>
+					<input type="text" class="form-control" id="linespinner" value="5" min="1" max="20">
+					<div class="input-group-btn-vertical">
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+					</div>
+				  </div>
+				  <!--<div class="input-group spacespinner spinner frm-area">
+					<label>Line Spacing</label>
+					<input type="text" class="form-control" value="5" min="1" max="20">
+					<div class="input-group-btn-vertical">
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+					</div>
+				  </div>-->
+			</div>
+			<div class="margin-tpp">
+			<label>Alignment</label>
+			<div class="alignment-icons-wrapper"> 
+			<label><input type="radio" name="text-alignment" id="align-left" value="left"><span>                               
+			<i class="fa fa-align-left" aria-hidden="true"></i> </span></label> 
+			<label><input type="radio" name="text-alignment"  id="align-center" value="right"><span>                                
+			<i class="fa fa-align-center" aria-hidden="true"></i></span></label>               
+			<label><input type="radio" name="text-alignment"  id="align-right" value="center"><span>
+			<i class="fa fa-align-right" aria-hidden="true"></i></span></label>                                            
+			<label><input type="radio" name="text-alignment"  id="align-justify" value="justify"><span>                  
+			<i class="fa fa-align-justify" aria-hidden="true"></i></span></label>
+			</div>
+			</div>
+			</div>
+        </div>
+
+<!-- shape setting -->        
+<div class="general-nav shape-setting-sidebar" id="shape-setting-sidebar">
+  
+  <div style="display: flex;">
+    <h4 class="sidebar-heading">Shape Settings</h4>
+    <h4 class="sidebar-close" id="shape-setting-close" style="cursor:pointer;"><strong>x</strong></h4>
+  </div>
+  <hr class="header-hr">
+  <div class="insert-item-types">
+
+
+			<div class="inner-frms">
+				
+				<div class="input-group linesizespinner spinner frm-area">
+						<label>Line Width</label>
+						<input type="text" class="form-control" value="8" min="1" max="150" id="linewidth">
+						<div class="input-group-btn-vertical">
+						  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+						  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+						</div>
+					  </div>
+			</div>
+		
+			<div class="inner-frms">
+				<div class="frm-area">
+				<label>Line Color</label>
+				
+			    <input type="text" id="shape-line-color" name="fontcolor" class="showPaletteOnly" value="#ccc">
+				</div>
+				<div class="frm-area">
+				<label>Fill Color</label>
+			    <input type="text" id="shape-fill-color" class="showPaletteOnly" name="bckcolor" value="#ccc">
+				</div>
+			</div>
+			<div class="inner-frms">
+			  
+				<div class="input-group heightspinner spinner frm-area">
+					<label>Height</label>
+					<input type="text" class="form-control" id="heightspinner" value="150" min="1" max="500">
+					<div class="input-group-btn-vertical">
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+					</div>
+				  </div>
+				  
+				  <div class="input-group widthspinner spinner frm-area">
+					<label>Width</label>
+					<input type="text" class="form-control" id="widthspinner" value="150" min="1" max="500">
+					<div class="input-group-btn-vertical">
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+					</div>
+				  </div>
+			
+			</div>
+			
+			<div class="inner-frms">
+			  
+				<div class="input-group topspinner spinner frm-area">
+					<label>Top</label>
+					<input type="text" class="form-control" id="topspinner" value="150" min="1" max="500">
+					<div class="input-group-btn-vertical">
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+					</div>
+				  </div>
+				  
+				  <div class="input-group leftspinner spinner frm-area">
+					<label>Left</label>
+					<input type="text" class="form-control" id="leftspinner" value="150" min="1" max="500">
+					<div class="input-group-btn-vertical">
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+					</div>
+				  </div>
+			
+			</div>
+			</div>
+        </div>
+        <!-- shape setting -->
+        
+        
+        <!-- Image Setting -->
+<div class="general-nav image-setting-sidebar" id="image-setting-sidebar">
+  <div style="display: flex;">
+    <h4 class="sidebar-heading">Image Settings</h4>
+    <h4 class="sidebar-close" id="image-setting-close" style="cursor:pointer;"><strong>x</strong></h4>
+  </div>
+  
+
+  <hr class="header-hr">
+  <div class="insert-item-types">
+
+			<div class="inner-frms">
+				
+				<div class="input-group">
+						<label>Fitting Option</label>
+						<select class="js-example-basic-single selectimagefitting" id="selectimagefitting">
+            			  <option value="cover">Crop</option>
+            			  <option value="contain">Fit</option>
+            			  <option value="100% 100%">Stretch</option>
+            			</select>
+					
+					  </div>
+			</div>
+		
+			<div class="inner-frms">
+			  
+				<div class="input-group heightspinner spinner frm-area">
+					<label>Height</label>
+					<input type="text" class="form-control" id="imageheightspinner" value="150" min="1" max="500">
+					<div class="input-group-btn-vertical">
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+					</div>
+				  </div>
+				  
+				  <div class="input-group widthspinner spinner frm-area">
+					<label>Width</label>
+					<input type="text" class="form-control" id="imagewidthspinner" value="150" min="1" max="500">
+					<div class="input-group-btn-vertical">
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+					</div>
+				  </div>
+			
+			</div>
+			
+			<div class="inner-frms">
+			  
+				<div class="input-group topspinner spinner frm-area">
+					<label>Top</label>
+					<input type="text" class="form-control" id="imagetopspinner" value="150" min="1" max="500">
+					<div class="input-group-btn-vertical">
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+					</div>
+				  </div>
+				  
+				  <div class="input-group leftspinner spinner frm-area">
+					<label>Left</label>
+					<input type="text" class="form-control" id="imageleftspinner" value="150" min="1" max="500">
+					<div class="input-group-btn-vertical">
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+					  <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+					</div>
+				  </div>
+			
+			</div>
+			</div>
+        </div>
+        <!-- shape setting -->
+        <!-- end image setting -->
+		<input type="hidden" value="" id="active_element" />
+
+ <div class="form-actions layout-form-actions bottom-btns">
+	<button type="submit" class="save-btnss">Save</button>
+	<button class="cancel-btnss">Cancel</button>
+</div>
+<!-- Modal -->
+  <div class="modal fade cust-model" id="myModal" role="dialog">
+    <div class="modal-dialog">    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+		<select class="js-example-basic-single selctarea images-option" name="state">
+			
+			</select>
+        </div>
+        <div class="modal-footer">
+          <button  type="button" class="btn btn-success ok-btns">Ok</button>
+		  <button  type="button " class="btn btn-primary cancel-btns">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<!-- shape model -->
+ <div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade custom-shape-model" id="myModals" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		  <h4 class="heading-sp">Select type of shape</h4>
+        </div>
+        <div class="modal-body">
+			<div class="insert-item-types cust-shapes">
+			<ul>
+				<li class="reactangleshape"><a href="#"><span class="reactangle-icon"></span> </a><span class="insert-label">Rectangle</span></li>
+				<li class="circleshape"><a href="#"><span class="circle-icon"></span> </a><span class="insert-label">Ecllipse</span></li>
+			    <!--<li><a href="#"><span class="oval-icon"></span> </a><span class="insert-label">Oval</span></li>
+				<li><a href="#"><span class="horline-icon"></span> </a><span class="insert-label">Horizontal Line</span></li>
+				<li><a href="#"><span class="vertline-icon"></span> </a><span class="insert-label">Vertical Line</span></li>
+				<li><a href="#"><span class="right-diagonal-icon"></span> </a><span class="insert-label">Right Diagonal Line</span></li>
+				<li><a href="#"><span class="left-diagonal-icon"></span> </a><span class="insert-label">Left Diagonal Line</span></li>-->
+				</ul>
+		</div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+ </div> 
+
+
+<script>
+var elem = document.getElementById("fullScreen");
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+function openNav() {
+    document.getElementById("shape-setting-sidebar").style.width = "0";
+    document.getElementById("text-setting-sidebar").style.width = "0";
+    document.getElementById("image-setting-sidebar").style.width = "0";
+    document.getElementById("mySidenav").style.width = "300px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+<script>
+	var item_num = 0;
+function opens() {
+	item_num++;
+	var rid = Math.floor(100000 + Math.random() * 900000)
+	$('.screen-canvas').append('<div class="text-box resizable draggable type-text" id="text_'+rid+'" attribute="'+item_num+'" contentEditable=true style="font-size:54px;" >Add Text...</div>');
+	$('#active_element').val('text_'+rid);
+	jQuery('.content_layer').prepend('<li class="ui-state-default list_text_'+rid+'" data-id="text_'+rid+'">Text #'+rid+'</li>');
+	document.getElementById("text-setting-sidebar").style.width = "300px";
+
+	loadscript();
+}
+
+
+jQuery('body').on('click', '.reactangleshape' ,function(e){
+	item_num++;
+    var rid = Math.floor(100000 + Math.random() * 900000);
+	jQuery('.screen-canvas').append('<div id="shape_'+rid+'" contenteditable="true" class="text-box1 resizable draggable type-text" attribute="'+item_num+'" style="width:450px;height:450px;backgroud-color:#000;border-width: 8px !important;border: solid;border-color: #fff;"></div>');
+	jQuery('#active_element').val('shape_'+rid);
+	jQuery('.content_layer').prepend('<li class="ui-state-default list_shape_'+rid+'" data-id="shape_'+rid+'">Rectangle #'+rid+'</li>');
+	document.getElementById("shape-setting-sidebar").style.width = "300px";
+	jQuery('.close').click();
+	loadscript();
+	
+})
+
+
+jQuery('body').on('click', '.circleshape' ,function(){
+	item_num++;
+    var rid = Math.floor(100000 + Math.random() * 900000);
+	jQuery('.screen-canvas').append('<div id="shape_'+rid+'" contenteditable="true" class="text-box1 resizable draggable type-text" attribute="'+item_num+'" style="width:450px;height:450px;backgroud-color:#000;border-width: 8px !important;border: solid;border-color: #fff;border-radius:50%;"></div>');
+	jQuery('#active_element').val('shape_'+rid);
+	jQuery('.content_layer').prepend('<li class="ui-state-default list_shape_'+rid+'" data-id="shape_'+rid+'">Circle #'+rid+'</li>');
+	document.getElementById("shape-setting-sidebar").style.width = "300px";
+	
+	jQuery('.close').click();
+	loadscript();
+})
+
+
+
+
+$('.ok-btns').on('click', function(){
+	item_num++;
+    var imageurl = $('.images-option').val();
+    var rid = Math.floor(100000 + Math.random() * 900000);
+	jQuery('.screen-canvas').append('<div id="image_'+rid+'" class="text-box1 resizable draggable type-text" attribute="'+item_num+'" style="height:450px;width:450px;" contenteditable="true"></div>');
+	jQuery('#image_'+rid).css({'background-image':"url("+imageurl+")",'background-repeat':'no-repeat','background-size': 'cover'});
+	jQuery('.content_layer').prepend('<li class="ui-state-default list_image_'+rid+'" data-id="image_'+rid+'">Image #'+rid+'</li>');
+	
+	jQuery('#active_element').val('image_'+rid);
+	document.getElementById("image-setting-sidebar").style.width = "300px";
+    $('.close').click();
+    loadscript();
+})
+
+
+
+
+function closeNav() {
+  document.getElementById("shape-setting-sidebar").style.width = "0";
+    document.getElementById("text-setting-sidebar").style.width = "0";
+    document.getElementById("image-setting-sidebar").style.width = "0";
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("general-nav").style.width = "300px";
+    //document.getElementById("mySidenav").style.width = "300px;
+}
+
+jQuery('#text-setting-close').on('click', function(){
+    
+    document.getElementById("shape-setting-sidebar").style.width = "0";
+    document.getElementById("text-setting-sidebar").style.width = "0";
+    document.getElementById("image-setting-sidebar").style.width = "0";
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("general-nav").style.width = "300px";
+})
+
+jQuery('#image-setting-close').on('click', function(){
+    
+    document.getElementById("shape-setting-sidebar").style.width = "0";
+    document.getElementById("text-setting-sidebar").style.width = "0";
+    document.getElementById("image-setting-sidebar").style.width = "0";
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("general-nav").style.width = "300px";
+})
+
+
+jQuery('#shape-setting-close').on('click', function(){
+    
+    document.getElementById("shape-setting-sidebar").style.width = "0";
+    document.getElementById("text-setting-sidebar").style.width = "0";
+    document.getElementById("image-setting-sidebar").style.width = "0";
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("general-nav").style.width = "300px";
+})
+
+jQuery('#insert-setting').on('click', function(){
+    
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("shape-setting-sidebar").style.width = "0";
+    document.getElementById("text-setting-sidebar").style.width = "0";
+    document.getElementById("image-setting-sidebar").style.width = "0";
+
+})
+
+
+</script>
+<script>
+   jQuery('.js-example-basic-single').select2();
+</script>
+<script>
+	
+	
+	$('.land-pot').on('change', function(){
+		var val = $(this).val();
+		if(val === "l"){
+		    jQuery('#fullScreen').css('margin-left','-576px');
+		    jQuery('#fullScreen').css('width', '1920px');
+		    jQuery('#fullScreen').css('height',  '1080px');
+		    
+		    jQuery('#screen-editor').css('width', '778px');
+		    jQuery('#screen-editor').css('height',  '442px');
+		    jQuery('#screen-editor').css('margin-left',  'unset');
+		    
+		    
+		    console.log('jj');
+		}else{
+		    jQuery('#fullScreen').css('margin-left','-276px');
+		    jQuery('#fullScreen').css('width', '920px');
+		    jQuery('#fullScreen').css('height',  '1080px');
+		    
+		    jQuery('#screen-editor').css('width',  '378px');
+		    jQuery('#screen-editor').css('height', '442px');
+    
+
+		    jQuery('#screen-editor').css('margin-left',  '200px');
+		    console.log('pp');
+		}
+	})
+
+	
+	$('body').on('click', '[id^=text_]' ,function(){
+	    $('#active_element').val($(this).attr('id'));
+	    var elemnt_id = $(this).attr('id');
+	    //var fontSize= $('#'+elemnt_id).css('font-size',$(this).val());
+	    //$('#fontsize').val(fontSize);
+	    document.getElementById("text-setting-sidebar").style.width = "300px";
+	    $(this).focus();
+	    
+		
+	})
+	
+	
+	$('body').on('click', '[id^=shape_]' ,function(){
+	    document.getElementById("shape-setting-sidebar").style.width = "300px";
+	    $(this).focus();
+		$('#active_element').val($(this).attr('id'));
+	})
+	
+	$('body').on('click', '[id^=image_]' ,function(){
+	    document.getElementById("image-setting-sidebar").style.width = "300px";
+	    $(this).focus();
+		$('#active_element').val($(this).attr('id'));
+	})
+	
+	
+	
+	$('.selectfont').on('change', function(){
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('font-family',$(this).val());
+	})
+	
+	
+	
+	$('.fontweight').on('change', function(){
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('font-weight',$(this).val());
+	})
+	
+	$('#fontsize').on('change', function(){
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('font-size',$(this).val());
+	})
+	
+	$('#fontcolor').on('change', function(){1
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('color',$(this).val());
+	})
+	
+	$('#bckcolor').on('change', function(){
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('background-color',$(this).val());
+	})
+	
+	$('#align-left').on('click', function(){
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('text-align','left');
+	})
+	
+	$('#align-right').on('click', function(){
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('text-align','right');
+	})
+	
+	$('#align-center').on('click', function(){
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('text-align','center');
+	})
+	
+	$('#align-justify').on('click', function(){
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('text-align','justify');
+	})
+	
+	/************************* Shape setting ****************************/
+			$('#shape-line-color').on('change', function(){1
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('border-color',$(this).val());
+	})
+	
+	$('#shape-fill-color').on('change', function(){
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('background-color',$(this).val());
+	})
+	
+	
+	
+	/**************************Image *********************************/
+	
+		$('#selectimagefitting').on('change', function(){
+		var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('background-size',$(this).val());
+	})
+
+	
+	/*********************************************************************/
+	
+	
+	function loadscript(){
+	   res_drag();
+	}
+
+	
+</script>
+<script>
+$(function(){
+    /***************** Text Font ****************************************/
+    $('.fontspinner .fa-caret-up').on('click', function() {	
+        var input = $('#fontsize');
+          if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+              console.log(input.val());
+            input.val(parseInt(input.val()) + 1);
+          } else {
+            btn.next("disabled", true);
+          }
+           var elemnt_id = $('#active_element').val();
+		    $('#'+elemnt_id).css('font-size',input.val()+'px');
+      
+	})
+	$('.fontspinner .fa-caret-down').on('click', function() {
+	    var input = $('#fontsize');
+          if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {  
+              console.log(parseInt(input.val()));
+            input.val(parseInt(input.val()) - 1);
+          } else {
+            btn.next("disabled", true);
+          }
+        var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('font-size',input.val()+'px');
+      
+	})
+	
+	$('#fontsize').on('input', function(){
+	    var input = $('#fontsize');
+	    var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('font-size',input.val()+'px');
+	})
+	/************************* text font end ******************************/
+	
+
+    
+    /************************* Line Height ********************/
+    
+    $('.linespinner .fa-caret-up').on('click', function() {	
+        var input = $('#linespinner');
+          if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+            input.val(parseInt(input.val()) + 1);
+          } else {
+            btn.next("disabled", true);
+          }
+          var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('line-height',input.val()+'px');
+      
+	})
+	$('.linespinner .fa-caret-down').on('click', function() {
+	    var input = $('#linespinner');
+          if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {  
+            input.val(parseInt(input.val()) - 1);
+          } else {
+            btn.next("disabled", true);
+          }
+        var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('line-height',input.val()+'px');
+      
+	})
+	
+	$('#linespinner').on('input', function(){
+	    var input = $('#linespinner');
+	    var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('line-height',input.val()+'px');
+	})
+    
+    /**********************************************************/
+    
+    $('.linesizespinner').on('click', function() {
+      var btn = $(this);
+      var input = btn.closest('.linesizespinner').find('input');
+	  var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('border-width',input.val()+'px');
+      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+        input.val(parseInt(input.val(), 10) + 1);
+      } else {
+        btn.next("disabled", true);
+      }
+    });
+    
+    
+    /********************* Image setting **************************/ 
+    $('.heightspinner .fa-caret-up').on('click', function() {	
+        var input = $('#imageheightspinner');
+          if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+            input.val(parseInt(input.val()) + 1);
+          } else {
+            btn.next("disabled", true);
+          }
+          var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('height',input.val()+'px');
+      
+	})
+	$('.heightspinner .fa-caret-down').on('click', function() {
+	    var input = $('#imageheightspinner');
+          if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {  
+            input.val(parseInt(input.val()) - 1);
+          } else {
+            btn.next("disabled", true);
+          }
+        var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('height',input.val()+'px');
+      
+	})
+	
+	$('#heightspinner').on('input', function(){
+	    var input = $('#imageheightspinner');
+	    var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('height',input.val()+'px');
+	})
+	
+	
+	/** Width **/
+	
+	$('.widthspinner .fa-caret-up').on('click', function() {	
+        var input = $('#imagewidthspinner');
+          if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+            input.val(parseInt(input.val()) + 1);
+          } else {
+            btn.next("disabled", true);
+          }
+          var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('width',input.val()+'px');
+      
+	})
+	$('.widthspinner .fa-caret-down').on('click', function() {
+	    var input = $('#imagewidthspinner');
+          if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {  
+            input.val(parseInt(input.val()) - 1);
+          } else {
+            btn.next("disabled", true);
+          }
+        var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('width',input.val()+'px');
+      
+	})
+	
+	$('#widthspinner').on('input', function(){
+	    var input = $('#imagewidthspinner');
+	    var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('width',input.val()+'px');
+	})
+	
+	
+	/** Top **/
+	
+	$('.topspinner .fa-caret-up').on('click', function() {	
+        var input = $('#imagetopspinner');
+          if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+            input.val(parseInt(input.val()) + 1);
+          } else {
+            btn.next("disabled", true);
+          }
+          var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('margin-top',input.val()+'px');
+      
+	})
+	$('.topspinner .fa-caret-down').on('click', function() {
+	    var input = $('#imagetopspinner');
+          if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {  
+            input.val(parseInt(input.val()) - 1);
+          } else {
+            btn.next("disabled", true);
+          }
+        var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('margin-top',input.val()+'px');
+      
+	})
+	
+	$('#topspinner').on('input', function(){
+	    var input = $('#imagetopspinner');
+	    var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('margin-top',input.val()+'px');
+	})
+	
+	/** left **/
+	
+	$('.leftspinner .fa-caret-up').on('click', function() {	
+        var input = $('#imageleftspinner');
+          if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+            input.val(parseInt(input.val()) + 1);
+          } else {
+            btn.next("disabled", true);
+          }
+          var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('margin-left',input.val()+'px');
+      
+	})
+	$('.leftspinner .fa-caret-down').on('click', function() {
+	    var input = $('#imageleftspinner');
+          if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {  
+            input.val(parseInt(input.val()) - 1);
+          } else {
+            btn.next("disabled", true);
+          }
+        var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('margin-left',input.val()+'px');
+      
+	})
+	
+	$('#leftspinner').on('input', function(){
+	    var input = $('#imageleftspinner');
+	    var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('margin-left',input.val()+'px');
+	})
+	
+	/******** background *********/
+	
+    
+     /************************************************************/
+
+
+/********************* Shape setting **************************/ 
+    $('.heightspinner .fa-caret-up').on('click', function() {	
+        var input = $('#heightspinner');
+          if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+            input.val(parseInt(input.val()) + 1);
+          } else {
+            btn.next("disabled", true);
+          }
+          var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('height',input.val()+'px');
+      
+	})
+	$('.heightspinner .fa-caret-down').on('click', function() {
+	    var input = $('#heightspinner');
+          if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {  
+            input.val(parseInt(input.val()) - 1);
+          } else {
+            btn.next("disabled", true);
+          }
+        var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('height',input.val()+'px');
+      
+	})
+	
+	$('#heightspinner').on('input', function(){
+	    var input = $('#heightspinner');
+	    var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('height',input.val()+'px');
+	})
+	
+	
+	/** Width **/
+	
+	$('.widthspinner .fa-caret-up').on('click', function() {	
+        var input = $('#widthspinner');
+          if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+            input.val(parseInt(input.val()) + 1);
+          } else {
+            btn.next("disabled", true);
+          }
+          var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('width',input.val()+'px');
+      
+	})
+	$('.widthspinner .fa-caret-down').on('click', function() {
+	    var input = $('#widthspinner');
+          if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {  
+            input.val(parseInt(input.val()) - 1);
+          } else {
+            btn.next("disabled", true);
+          }
+        var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('width',input.val()+'px');
+      
+	})
+	
+	$('#widthspinner').on('input', function(){
+	    var input = $('#widthspinner');
+	    var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('width',input.val()+'px');
+	})
+	
+	
+	/** Top **/
+	
+	$('.topspinner .fa-caret-up').on('click', function() {	
+        var input = $('#topspinner');
+          if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+            input.val(parseInt(input.val()) + 1);
+          } else {
+            btn.next("disabled", true);
+          }
+          var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('marin-top',input.val()+'px');
+      
+	})
+	$('.topspinner .fa-caret-down').on('click', function() {
+	    var input = $('#topspinner');
+          if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {  
+            input.val(parseInt(input.val()) - 1);
+          } else {
+            btn.next("disabled", true);
+          }
+        var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('marin-top',input.val()+'px');
+      
+	})
+	
+	$('#topspinner').on('input', function(){
+	    var input = $('#topspinner');
+	    var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('marin-top',input.val()+'px');
+	})
+	
+	/** left **/
+	
+	$('.leftspinner .fa-caret-up').on('click', function() {	
+        var input = $('#leftspinner');
+          if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {  
+            input.val(parseInt(input.val()) + 1);
+          } else {
+            btn.next("disabled", true);
+          }
+          var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('marin-left',input.val()+'px');
+      
+	})
+	$('.leftspinner .fa-caret-down').on('click', function() {
+	    var input = $('#leftspinner');
+          if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {  
+            input.val(parseInt(input.val()) - 1);
+          } else {
+            btn.next("disabled", true);
+          }
+        var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('marin-left',input.val()+'px');
+      
+	})
+	
+	$('#leftspinner').on('input', function(){
+	    var input = $('#leftspinner');
+	    var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).css('marin-left',input.val()+'px');
+	})
+    
+     /************************************************************/
+})
+
+jQuery('.fa-trash-alt').on('click', function(){
+    var elemnt_id = $('#active_element').val();
+    $('.list_'+elemnt_id).remove();
+	$('#'+elemnt_id).remove();
+})
+
+</script>
+
+<style>
+
+#innerDiv {
+  height: inherit;
+  width: inherit;
+  background: transparent;
+} 
+
+.draggable:focus {
+  outline: 8px dashed white;
+}
+
+.resizable:focus {=
+  outline: 8px dashed white;
+}
+
+.resize {
+  border-radius:10px;
+  border: 9.5px solid white;
+  width:25px;
+  height:25px;
+  position:absolute;
+  box-shadow: 0 0 2px blue;
+  z-index:1;
+  opacity:0.9;
+  -moz-user-select: none;
+}
+
+.resize.nw {
+  top:-20px;
+  left:-20px;
+  right:auto;
+  bottom:auto;
+  cursor:nwse-resize;
+}
+
+.resize.n {
+  top:-25px;
+  left:calc(50% - 5px);
+  right:auto;
+  bottom:auto;
+  cursor:ns-resize;
+}
+.resize.ne {
+  top:-20px;
+  left:auto;
+  right:-20px;
+  bottom:auto;
+  cursor:nesw-resize;
+}
+.resize.w {
+  top:calc(50% - 5px);
+  left:-25px;
+  right:auto;
+  bottom:-25px;
+  cursor:ew-resize;
+}
+.resize.e {
+  top:calc(50% - 5px);
+  left:auto;
+  right:-25px;
+  bottom:-5px;
+  cursor:ew-resize;
+}
+.resize.sw {
+  top:auto;
+  left:-20px;
+  right:auto;
+  bottom:-20px;
+  cursor:nesw-resize;
+}
+.resize.s {
+  top:auto;
+  left:calc(50% - 5px);
+  right:-5px;
+  bottom:-25px;
+  cursor:ns-resize;
+}
+.resize.se {
+  top:auto;
+  left:auto;
+  right:-20px;
+  bottom:-20px;
+  cursor:nwse-resize;
+}
+
+@media (pointer: coarse) {
+  .resize {
+  width:45px;
+  height:45px;
+  border: 7.5px solid white;
+  border-radius: 30px;
+}
+
+.resize.nw {
+  top:-15px;
+  left:-15px;
+  right:auto;
+  bottom:auto;
+  cursor:nwse-resize;
+}
+
+.resize.n {
+  top:-15px;
+  left:calc(50% - 15px);
+  right:auto;
+  bottom:auto;
+  cursor:ns-resize;
+}
+.resize.ne {
+  top:-15px;
+  left:auto;
+  right:-15px;
+  bottom:auto;
+  cursor:nesw-resize;
+}
+.resize.w {
+  top:calc(50% - 15px);
+  left:-25px;
+  right:auto;
+  bottom:-15px;
+  cursor:ew-resize;
+}
+.resize.e {
+  top:calc(50% - 15px);
+  left:auto;
+  right:-25px;
+  bottom:-15px;
+  cursor:ew-resize;
+}
+.resize.sw {
+  top:auto;
+  left:-20px;
+  right:auto;
+  bottom:-20px;
+  cursor:nesw-resize;
+}
+.resize.s {
+  top:auto;
+  left:calc(50% - 15px);
+  right:-15px;
+  bottom:-15px;
+  cursor:ns-resize;
+}
+.resize.se {
+  top:auto;
+  left:auto;
+  right:-15px;
+  bottom:-15px;
+  cursor:nwse-resize;
+  }
+}
+</style>
+<script>
+
+/********************** resize script **********************/
+function res_drag(){
+    
+var elemnt_id = $('#active_element').val();
+    var idKey = elemnt_id.split('_')[0];
+
+    if(idKey === 'text'){
+        var resizeHandles = 
+    '<div class="resize w" id="w" draggable="false" contenteditable="false"></div><div class="resize e" id="e" draggable="false" contenteditable="false"></div>';
+
+    }else{
+
+var resizeHandles = 
+    '<div class="resize nw" id="nw" draggable="false" contenteditable="false"></div><div class="resize n" id="n" draggable="false" contenteditable="false"></div><div class="resize ne" id="ne" draggable="false" contenteditable="false"></div><div class="resize w" id="w" draggable="false" contenteditable="false"></div><div class="resize e" id="e" draggable="false" contenteditable="false"></div><div class="resize sw" id="sw" draggable="false" contenteditable="false"></div><div class="resize s" id="s" draggable="false" contenteditable="false"></div><div class="resize se" id="se" draggable="false" contenteditable="false"></div>';
+}
+
+
+    
+var dragging = false,
+    currentDragged;
+
+var resizing = false,
+    currentResizeHandle,
+    sX,
+    sY;
+
+var mousedownEventType = ((document.ontouchstart!==null)?'mousedown':'touchstart'),
+    mousemoveEventType = ((document.ontouchmove!==null)?'mousemove':'touchmove'),
+    mouseupEventType = ((document.ontouchmove!==null)?'mouseup':'touchend');
+
+$('.draggable')
+.on(mousedownEventType, function(e){
+  if (!e.target.classList.contains("resize") && !resizing) {
+    currentDragged = $(this);
+    dragging = true;
+    sX = e.pageX;
+    sY = e.pageY;
+  }
+});
+
+$(".resizable").on('blur',function(e){
+    console.log('blur');
+  $(this).children(".resize").remove();
+});
+
+$(".resizable").focus(function(e){
+
+  $(this).html($(this).html() + resizeHandles);
+  $(".resize").on(mousedownEventType, function(e){
+    currentResizeHandle = $(this);
+    resizing = true;
+    sX = e.pageX;
+    sY = e.pageY;
+  });
+})
+
+
+
+$("body").on(mousemoveEventType, function(e) {
+  var xChange = e.pageX - sX,
+      yChange = e.pageY - sY;
+
+  if (resizing) {
+    e.preventDefault();
+    
+    var parent  = currentResizeHandle.parent();
+    
+    switch (currentResizeHandle.attr('id')) {
+      case "nw":
+        var newWidth = parseFloat(parent.css('width')) - xChange*2.5,
+            newHeight = parseFloat(parent.css('height')) - yChange*2.5,
+            newLeft = parseFloat(parent.css('margin-left')) + xChange*2.5,
+            newTop = parseFloat(parent.css('margin-top')) + yChange*2.5;
+        break;
+      case "n":
+        var newWidth = parseFloat(parent.css('width')),
+            newHeight = parseFloat(parent.css('height')) - yChange*2.5,
+            newLeft = parseFloat(parent.css('margin-left')),
+            newTop = parseFloat(parent.css('margin-top')) + yChange*2.5;
+        break;
+      case "ne":
+        var newWidth = parseFloat(parent.css('width')) + xChange*2.5,
+            newHeight = parseFloat(parent.css('height')) - yChange*2.5,
+            newLeft = parseFloat(parent.css('margin-left')),
+            newTop = parseFloat(parent.css('margin-top')) + yChange*2.5;
+        break;
+      case "e":
+        var newWidth = parseFloat(parent.css('width')) + xChange*2.5,
+            newHeight = parseFloat(parent.css('height')),
+            newLeft = parseFloat(parent.css('margin-left')),
+            newTop = parseFloat(parent.css('margin-top'));
+        break;
+      case "w":
+        var newWidth = parseFloat(parent.css('width')) - xChange*2.5,
+            newHeight = parseFloat(parent.css('height')),
+            newLeft = parseFloat(parent.css('margin-left')) + xChange*2.5 ,
+            newTop = parseFloat(parent.css('margin-top'));
+        break;
+      case "sw":
+        var newWidth = parseFloat(parent.css('width')) - xChange *2.5,
+            newHeight = parseFloat(parent.css('height')) + yChange*2.5,
+            newLeft = parseFloat(parent.css('margin-left')) + xChange *2.5,
+            newTop = parseFloat(parent.css('margin-top'));
+        break;
+      case "s":
+        var newWidth = parseFloat(parent.css('width')),
+            newHeight = parseFloat(parent.css('height')) + yChange*2.5,
+            newLeft = parseFloat(parent.css('margin-left')),
+            newTop = parseFloat(parent.css('margin-top'));
+        break;
+      case "se":
+        var newWidth = parseFloat(parent.css('width')) + xChange*2.5,
+            newHeight = parseFloat(parent.css('height')) + yChange*2.5,
+            newLeft = parseFloat(parent.css('margin-left')),
+            newTop = parseFloat(parent.css('margin-top'));
+        break;
+        
+    }
+    
+    
+    var elemnt_id = $('#active_element').val();
+    var idKey = elemnt_id.split('_')[0];
+
+    if(idKey === 'shape'){
+        $('#heightspinner').val(newHeight);
+        $('#widthspinner').val(newWidth);
+        $('#topspinner').val(newTop);
+        $('#leftspinner').val(newLeft);
+
+        
+        
+    }else if(idKey === 'image'){
+        $('#imageheightspinner').val(newHeight);
+        $('#imagewidthspinner').val(newWidth);
+        $('#imagetopspinner').val(newTop);
+        $('#imageleftspinner').val(newLeft);
+    }else{
+        var fontSize = jQuery('#'+elemnt_id).css('font-size');
+        var oldHeight = jQuery('#'+elemnt_id).css('height');
+        var oldWidth = jQuery('#'+elemnt_id).css('width');
+        
+        if(parseInt(newHeight) > parseInt(oldHeight)){
+            console.log(newHeight+'--'+oldHeight);
+            jQuery('#'+elemnt_id).css('font-size', parseInt(newHeight)- 10+'px');
+            jQuery('#fontsize').val(parseInt(fontSize) - 10);
+        }
+        /*else{
+            console.log('less');
+            console.log(newHeight+'--'+oldHeight);
+            jQuery('#'+elemnt_id).css('font-size', parseInt(newHeight) - 20+'px');
+            jQuery('#fontsize').val(parseInt(fontSize) - 20);
+        }*/
+    }
+    //Width
+    var containerWidth = parseFloat(parent.parent().css("width"));
+    
+    if (newLeft < 0) {
+      newWidth += newLeft;
+      newLeft = 0;
+    }
+    if (newWidth < 0) {
+      newWidth = 0;
+      newLeft = parent.css("margin-left");
+    }
+    if (newLeft + newWidth > containerWidth) {
+      newWidth = containerWidth-newLeft;
+    }
+    
+    parent
+      .css('margin-left', newLeft + "px")
+      .css('width', newWidth + "px");
+    sX = e.pageX;
+
+    //Height
+    var containerHeight = parseFloat(parent.parent().css("height"));
+    
+    if (newTop < 0) {
+      newHeight += newTop;
+      newTop = 0;
+    }
+    if (newHeight < 0) {
+      newHeight = 0;
+      newTop = parent.css("margin-top");
+    }
+    if (newTop + newHeight > containerHeight) {
+      newHeight = containerHeight-newTop;
+    }
+    
+    parent
+      .css('margin-top', newTop + "px")
+      .css('height', newHeight + "px");
+    sY = e.pageY;
+    
+  } 
+  if (dragging) {
+    e.preventDefault();
+	
+    var draggedWidth = parseFloat(currentDragged.css("width")),
+        draggedHeight = parseFloat(currentDragged.css("height")),
+        containerWidth = parseFloat(currentDragged.parent().css("width")),
+        containerHeight = parseFloat(currentDragged.parent().css("height"));
+
+	var item = parseFloat(currentDragged.attr("attribute"));
+
+// fix the dragging issue
+	//item_num is the number of components like image, text and shape.
+	//item is order of component.
+	newLeft = (parseFloat(currentDragged.css("margin-left")) + xChange*2.5/(item_num-item+1));
+    newTop = (parseFloat(currentDragged.css("margin-top")) + yChange*2.5/(item_num-item+1));
+//end of issue
+	
+    if (newLeft < 0) {
+      newLeft = 0;
+    }
+    if (newTop < 0) {
+      newTop = 0;
+    }
+    if (newLeft + draggedWidth > containerWidth) {
+      newLeft = containerWidth - draggedWidth;
+    }
+    if (newTop + draggedHeight > containerHeight) {
+      newTop = containerHeight - draggedHeight;
+    }
+    
+    currentDragged
+      .css("margin-left", newLeft + "px")
+      .css("margin-top", newTop + "px");
+    sX = e.pageX;
+    sY = e.pageY;
+    
+    var elemnt_id = $('#active_element').val();
+    var idKey = elemnt_id.split('_')[0];
+
+    if(idKey === 'shape'){
+        $('#topspinner').val(newTop);
+        $('#leftspinner').val(newLeft);
+    }else if(idKey === 'image'){
+        $('#imagetopspinner').val(newTop);
+        $('#imageleftspinner').val(newLeft);
+    }
+    
+  }
+})
+.on(mouseupEventType, function(e){
+  dragging = false;
+  resizing = false;
+});
+var elemnt_id = $('#active_element').val();
+		$('#'+elemnt_id).click().click();
+}
+</script>
+<script src="../dist/js/spectrum.js"></script>
+<script>
+	
+	$(".showPaletteOnly").spectrum({
+    showPaletteOnly: true,
+    showPalette:true,
+    color: 'blanchedalmond',
+    palette: [
+        ["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
+        ["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
+        ["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+        ["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+        ["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+        ["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+        ["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+        ["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+    ]
+});
+
+</script>
+</body>
+</html> 
